@@ -4,7 +4,16 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_opengl3.h"
+#include "imgui/imgui_impl_glfw.h"
+
 #include "ShaderProgram.h"
+#include "Camera.h"
+
+#include "Model.h"
+#include "FileSystem.h"
+#include "Light.h"
 
 #include <iostream>
 #include <vector>
@@ -24,9 +33,13 @@ class Engine {
 
     private:
         GLFWwindow* mainWindow;
+        char* glsl_version;
         char* mainWindowName;
         int mainWindowWidth;
         int mainWindowHeight;
+
+        // scene data
+        std::vector<Camera> cameraList;
 
 
 };

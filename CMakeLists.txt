@@ -1,8 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 project(gemgemEngine) 
-
+SET(CMAKE_CXX_STANDARD 11)
 # libraries
-add_subdirectory(Dependencies)
+add_subdirectory( Dependencies )
 
-# build 
-add_subdirectory(Source)
+# Engine
+add_subdirectory( Engine )
+
+# application
+add_subdirectory( App )
