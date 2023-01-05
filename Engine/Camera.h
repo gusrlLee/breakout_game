@@ -27,6 +27,8 @@ class Camera
     public:
         Camera(glm::vec3 position, glm::vec3 up, float yaw, float picth);
         Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch);
+        float Zoom;
+
         glm::mat4 getViewMatrix();
         void processKeyboard();
     
@@ -45,7 +47,6 @@ class Camera
         // camera options
         float MovementSpeed;
         float MouseSensitivity;
-        float Zoom;
 
 };
 

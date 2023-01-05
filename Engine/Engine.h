@@ -40,8 +40,9 @@ class Engine {
 
         // scene data
         std::vector<Camera> cameraList;
-
-
+        Camera* camera;
+        ShaderProgram* shader;
+        Model* model;
 };
 
 #endif // ENGINE_H

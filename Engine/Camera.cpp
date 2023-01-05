@@ -30,6 +30,11 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
     updateCameraVectors();
 }
 
+glm::mat4 Camera::getViewMatrix() 
+{
+    return glm::lookAt(Position, Position + Front, Up);
+}
+
 void Camera::updateCameraVectors() 
 {
     // calculate the new Front vector

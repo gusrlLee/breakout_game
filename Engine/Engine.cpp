@@ -33,6 +33,11 @@ void Engine::init()
         std::cout << "[SYSTEM]::[ERROR] Failed to initialization GLAD." << std::endl;
         exit(-1);
     }
+    glEnable(GL_DEPTH_TEST);
+    camera = new Camera(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0, 1.0, 0.0), -90.0f, 0.0f); // pos, up, yaw, pitch
+    model = new Model(FileSystem::getPath("../../Resource/Mesh/cube/cube.obj").c_str());
+    shader = new ShaderProgram("../../Resource/Shader/v_edit_mode.glsl", "../../Resource/Shader/f_edit_mode.glsl");
+
 } 
 
 void Engine::Update(float dt) 
@@ -47,7 +52,6 @@ void Engine::processInput(float dt)
 
 void Engine::Render() 
 {
-
     // create IMGUI library
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -62,9 +66,18 @@ void Engine::Render()
     {
         glfwPollEvents();
 
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
+        shader->use();
+        glm::mat4 projection = glm::perspective(glm::radians(camera->Zoom), (float)mainWindowWidth / (float)mainWindowHeight, 0.1f, 100.0f);
+        glm::mat4 view = camera->getViewMatrix();
+        shader->setMat4("projection", projection);
+        shader->setMat4("view", view);
+        glm::mat4 model_pos = glm::mat4(1.0f);
+        shader->setMat4("model", model_pos);
+        model->Draw(*shader);
+
         // input
         // -----
         if(glfwGetKey(mainWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -101,7 +114,6 @@ void Engine::Render()
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         glfwSwapBuffers(mainWindow);
-        
     }
 
     ImGui_ImplOpenGL3_Shutdown();
