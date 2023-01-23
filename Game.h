@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 
 #include "GameLevel.h"
+#include "BallObject.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -22,7 +23,7 @@ class Game
         unsigned int Width, Height;
         std::vector<GameLevel> Levels;
         unsigned int Level;
-        
+
         // constructor/destructor
         Game(unsigned int width, unsigned int height);
         ~Game();

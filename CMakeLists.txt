@@ -26,6 +26,7 @@ add_executable(${PROJECT_NAME}
     SpriteRenderer.cpp
     GameObject.cpp
     GameLevel.cpp
+    BallObject.cpp
 )
 
 target_link_directories(${PROJECT_NAME} PUBLIC

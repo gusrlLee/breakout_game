@@ -24,4 +24,5 @@ public:
     virtual void Draw(SpriteRenderer &renderer);
 
 };
+
 #endif 
