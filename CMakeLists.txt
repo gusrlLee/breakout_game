@@ -24,6 +24,8 @@ add_executable(${PROJECT_NAME}
     Shader.cpp
     Texture.cpp
     SpriteRenderer.cpp
+    GameObject.cpp
+    GameLevel.cpp
 )
 
 target_link_directories(${PROJECT_NAME} PUBLIC
