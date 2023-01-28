@@ -14,6 +14,16 @@ enum GameState {
     GAME_WIN
 }; 
 
+// for direction.
+enum Direction {
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT
+};    
+
+typedef std::tuple<bool, Direction, glm::vec2> Collision;  
+
 class Game
 {
     public:
@@ -33,6 +43,10 @@ class Game
         void ProcessInput(float dt);
         void Update(float dt);
         void Render();
+        void DoCollisions();
+
+        void ResetLevel();
+        void ResetPlayer();
 };
 
 #endif

@@ -7,6 +7,11 @@
 #include "GameObject.h"
 #include "Texture.h"
 
+
+// BallObject holds the state of the Ball object inheriting
+// relevant state data from GameObject. Contains some extra
+// functionality specific to Breakout's ball object that
+// were too specific for within GameObject alone.
 class BallObject : public GameObject
 {
 public:
